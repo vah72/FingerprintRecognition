@@ -99,33 +99,32 @@ def delete_employee(request, employee_id):
     return redirect('list-employees')
     
 
-# @login_required
-# def choose_employee(request):
-#     if request.method == 'POST':
-#         form = chooseEmployeetForm(request.POST)
-#         data = request.POST.copy()
-#         id= data.get('employee_id')
-#         print(type(id))
-#         if Employee.objects.filter(id=id).exists():
-#             # create_dataset(id)
-#             return redirect('show-sample')
-#         else :
-#             messages.warning(request, f'No such employee id found. Please register employee first.')
-#             return redirect('dashboard')
-#     else :
-#         form = chooseEmployeetForm()
-#         return render(request,'choose_employee.html', {'form': form})
+@login_required
+def choose_employee(request):
+    if request.method == 'POST':
+        form = chooseEmployeetForm(request.POST)
+        data = request.POST.copy()
+        id= data.get('employee_id')
+        print(type(id))
+        if Employee.objects.filter(id=id).exists():
+            return redirect('show-sample')
+        else :
+            messages.warning(request, f'No such employee id found. Please register employee first.')
+            return redirect('dashboard')
+    else :
+        form = chooseEmployeetForm()
+        return render(request,'choose_employee.html', {'form': form})
         
 @login_required
-def show_sample(request):
-    # form= ImageForm(request.POST)
-    # if Image.objects.filter(employee=10).exists():
-    #     images = Image.objects.all(employee=10)
-    #     return render(request,'show_sample.html', { "form" : form})
-    # return render(request,'show_sample.html', { 'form':form})
-    images = Image.objects.all()
-    form= showSampleForm(request.POST)
-    return render(request,'show_sample.html', { 'images': images})
+def show_sample(request, employee_id):
+    form= ImageForm(request.POST)
+    if Image.objects.filter(fk=employee_id).exists():
+        images = Image.objects.all(fk=employee_id)
+        return render(request,'show_sample.html', { "form" : form, 'employee_id':employee_id})
+    return render(request,'show_sample.html', { 'form':form, 'employee_id':employee_id})
+    # images = Image.objects.all()
+    # form= showSampleForm(request.POST)
+    # return render(request,'show_sample.html', { 'images': images})
       
 @login_required
 def show_sample_employee(request, employee_id):
@@ -357,15 +356,5 @@ def train_data():
     testAcc, testPrecision, testRecall, testF1Score= my_metrics(true_classes, yPredictions)
     # model.save(MODEL_FILENAME)
     
-    # try:
-    #     plt.plot()
-    #     plt.plot(history.history['val_accuracy'])
-    #     plt.title('model accuracy')
-    #     plt.ylabel('accuracy')
-    #     plt.xlabel('epoch')
-    #     plt.legend(['train', 'test'], loc='upper left')
-    #     plt.show()
-    # except:
-    #     pass
     
     return testAcc, testPrecision, testRecall, testF1Score

@@ -90,47 +90,50 @@ box-shadow:         2px 2px 15px 0px rgba(0, 3, 0, 0.7);">
 
 
 
-      <div class="row">
+      {% comment %} <div class="row">
      
        
 
            <div class="col-md-3">
           <a href="{%url 'list-employees' %}"><img src="{% static 'recognition/img/register.png' %}" class="img-responsive" style="width:300px;height:300px ;" /></a>
-       
+          <h4 class="text-center att">Manage employee</h4>
         </div>
-          <div class="col-md-3">
-          <a href="{%url 'show-sample'%}"><img src="{% static 'recognition/img/addphotos.png' %}" class="img-responsive" style="width:300px;height:300px ;" /></a>
+          {% comment %} <div class="col-md-3">
+          <a href="{%url 'choose-employee'%}"><img src="{% static 'recognition/img/addphotos.png' %}" class="img-responsive" style="width:300px;height:300px ;" /></a>
           
-        </div>
-           <div class="col-md-3">
+        </div> {% endcomment %}
+           {% comment %} <div class="col-md-3">
           <a href="{%url 'train' %}" id="train" ><img src="{% static 'recognition/img/train.jpeg' %}" class="img-responsive" style="width:300px;height:300px ;" /></a>
-          
+          <h4 class="text-center att">Train</h4>
         </div> 
         <div class="col-md-3">
           <a href="{%url 'view-statitics-home' %}"><img src="{% static 'recognition/img/reports.png' %}" class="img-responsive" style="width:300px;height:300px"/></a>
-       
+           <h4 class="text-center lgn">View Statitics Reports </h4>
         </div>
        
 
 
 
 
-      </div>
+      </div>  {% endcomment %}
   <div class="row">
 
   
 
         <div class="col md-3">
    <h4 class="text-center att">Manage employee</h4>
+   <a href="{%url 'list-employees' %}"><img src="{% static 'recognition/img/register.png' %}" class="img-responsive" style="width:300px;height:300px ;" /></a>
         </div>
-        <div class="col md-3">
+        {% comment %} <div class="col md-3">
    <h4 class="text-center att">Manage photoes</h4>
-        </div>
+        </div> {% endcomment %}
             <div class="col md-3">
    <h4 class="text-center att">Train</h4>
+   <a href="{%url 'train' %}" id="train" ><img src="{% static 'recognition/img/train.jpeg' %}" class="img-responsive" style="width:300px;height:300px ;" /></a>
         </div>
         <div class="col md-3">
              <h4 class="text-center lgn">View Statitics Reports </h4>
+             <a href="{%url 'view-statitics-home' %}"><img src="{% static 'recognition/img/reports.png' %}" class="img-responsive" style="width:300px;height:300px"/></a>
         </div> 
      
 

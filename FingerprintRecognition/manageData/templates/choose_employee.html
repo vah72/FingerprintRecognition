@@ -37,19 +37,24 @@ box-shadow:         2px 2px 15px 0px rgba(0, 3, 0, 0.7); margin-left:auto; margi
 -moz-box-shadow:    2px 2px 15px 0px rgba(0, 3, 0, 0.7);
 box-shadow:         2px 2px 15px 0px rgba(0, 3, 0, 0.7); margin-left:auto; margin-right: auto; ">
 
+<div id="content" class="colM">
+        
+  <h1>Add image</h1>
+  <div id="content-main">
+  <form enctype="multipart/form-data" action="" method="post" novalidate><input type="hidden" >
+      <div>
+        
+  <fieldset class="module aligned ">
+    <div class="form-row field-employee">
+            <div>
+                    <label class="required" for="id_employee">Employee:</label>
+                    
+                        <div class="related-widget-wrapper">
+<select name="employee" required id="id_employee">
+      
 
- <form method="POST" >
-      {% csrf_token %}
-      <fieldset class="form-group">
-        <legend class="border-bottom mb-4"> Enter Employe Name </legend>
-        {{form| crispy}}
-      </fieldset>
 
-      <div class="form-group">
-        <a href = "{% url 'show-sample'  %}" class="btn btn-outline-info" > Show Sample</a>
-      </div>
-    </form>
-</div>
+
 <div class="col-lg-12" style="padding-top: 100px;">
  {% if messages %}
       {% for message in messages%}
